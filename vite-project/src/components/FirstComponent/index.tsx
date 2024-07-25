@@ -1,7 +1,6 @@
-import React from "react";
 
 const FirstComponent = () => {
-    return(
+    return (
         <h1>This is my first component</h1>
     )
 }
