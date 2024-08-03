@@ -194,6 +194,7 @@ export default function SignIn() {
                         outline: 'none'
                       }
                     }}
+                    type='button'
                   >
                     Forgot your password?
                   </Link>
@@ -224,7 +225,7 @@ export default function SignIn() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                onClick={validateInputs}
+              // onClick={validateInputs}
               >
                 Sign in
               </Button>

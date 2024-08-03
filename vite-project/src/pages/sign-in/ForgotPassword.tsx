@@ -6,6 +6,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { toast } from 'react-toastify';
+import { isEmail } from '../../utils/validate';
 
 interface ForgotPasswordProps {
   open: boolean;
@@ -13,16 +15,25 @@ interface ForgotPasswordProps {
 }
 
 export default function ForgotPassword({ open, handleClose }: ForgotPasswordProps) {
+  const [email, setEmail] = React.useState<string>('')
+  const handleForgotPasswordSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isEmail(email)) {
+      toast.warning('You can Reset Password after backend complete')
+      handleClose()
+    }
+  }
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  }
   return (
     <Dialog
       open={open}
       onClose={handleClose}
       PaperProps={{
         component: 'form',
-        onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-          event.preventDefault();
-          handleClose();
-        },
+        onSubmit: handleForgotPasswordSubmit
       }}
     >
       <DialogTitle>Reset password</DialogTitle>
@@ -43,6 +54,8 @@ export default function ForgotPassword({ open, handleClose }: ForgotPasswordProp
           placeholder="Email address"
           type="email"
           fullWidth
+          value={email}
+          onChange={handleChange}
         />
       </DialogContent>
       <DialogActions sx={{ pb: 3, px: 3 }}>
