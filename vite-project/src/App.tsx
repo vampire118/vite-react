@@ -6,6 +6,7 @@ import SecondComponent from './components/SecondComponent'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Test from './pages/Test'
 import SignIn from './pages/sign-in/SignIn'
+import SignUp from './pages/sign-up/SignUp'
 
 function App() {
 
@@ -13,7 +14,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Test />} />
-        <Route path='/signin' element={<SignIn />} />
+        <Route path='/sign-in' element={<SignIn />} />
+        <Route path='/sign-up' element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   )
