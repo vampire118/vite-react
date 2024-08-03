@@ -1,4 +1,4 @@
-import { takeEvery, put, delay } from 'redux-saga/effects';
+import { takeLatest, put, delay, type Effect } from 'redux-saga/effects';
 import { increment } from './slice';
 
 // Worker Saga: IncrementAsync
@@ -7,7 +7,9 @@ function* incrementAsync() {
   yield put(increment());
 }
 
-// Watcher Saga: Watches for actions
-export function* watchIncrementAsync() {
-  yield takeEvery('counter/incrementAsync', incrementAsync);
+export function* watchIncrementAsync(){
+  console.log('object');
+  yield takeLatest(increment.type, incrementAsync);
+  // yield delay(1000);
+  // yield put(increment());
 }
