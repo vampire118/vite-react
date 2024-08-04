@@ -75,7 +75,7 @@ export default function Footer() {
                 fullWidth
                 aria-label="Enter your email address"
                 placeholder="Your email address"
-                slotProps={{
+                slotprops={{
                   htmlInput: {
                     autoComplete: 'off',
                     'aria-label': 'Enter your email address',

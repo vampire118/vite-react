@@ -127,7 +127,6 @@ export default function SignIn() {
 
     return isValid;
   };
-
   return (
     <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
       <CssBaseline />
@@ -141,7 +140,13 @@ export default function SignIn() {
           }}
         >
           <Card>
-            <SitemarkIcon />
+            <Link
+              href="/"
+              variant="body2"
+              sx={{ alignSelf: 'left' }}
+            >
+              <SitemarkIcon />
+            </Link>
             <Typography
               component="h1"
               variant="h4"

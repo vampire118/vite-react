@@ -144,7 +144,13 @@ export default function SignUp() {
           }}
         >
           <Card>
-            <SitemarkIcon />
+            <Link
+              href="/"
+              variant="body2"
+              sx={{ alignSelf: 'left' }}
+            >
+              <SitemarkIcon />
+            </Link>
             <Typography
               component="h1"
               variant="h4"

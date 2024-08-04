@@ -14,6 +14,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ToggleColorMode from './ToggleColorMode';
 
 import Sitemark from './SitemarkIcon';
+import { useNavigate } from 'react-router';
 
 interface AppAppBarProps {
   mode: PaletteMode;
@@ -26,6 +27,16 @@ export default function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+
+  const navigation = useNavigate();
+
+  const handleSignUp = () => {
+    navigation('/sign-up')
+  }
+
+  const handleSignIn = () => {
+    navigation('/sign-in')
+  }
 
   const scrollToSection = (sectionId: string) => {
     const sectionElement = document.getElementById(sectionId);
@@ -127,10 +138,10 @@ export default function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
               mode={mode}
               toggleColorMode={toggleColorMode}
             />
-            <Button color="primary" variant="text" size="small">
+            <Button color="primary" variant="text" size="small" onClick={handleSignIn}>
               Sign in
             </Button>
-            <Button color="primary" variant="contained" size="small">
+            <Button color="primary" variant="contained" size="small" onClick={handleSignUp}>
               Sign up
             </Button>
           </Box>
@@ -167,12 +178,12 @@ export default function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                 </MenuItem>
                 <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
+                  <Button color="primary" variant="contained" fullWidth onClick={handleSignUp}>
                     Sign up
                   </Button>
                 </MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
+                  <Button color="primary" variant="outlined" fullWidth onClick={handleSignIn}>
                     Sign in
                   </Button>
                 </MenuItem>
