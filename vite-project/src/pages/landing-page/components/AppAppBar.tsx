@@ -91,39 +91,6 @@ export default function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
               >
                 Features
               </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                onClick={() => scrollToSection('testimonials')}
-              >
-                Testimonials
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                onClick={() => scrollToSection('highlights')}
-              >
-                Highlights
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                onClick={() => scrollToSection('pricing')}
-              >
-                Pricing
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                onClick={() => scrollToSection('faq')}
-                sx={{ minWidth: 0 }}
-              >
-                FAQ
-              </Button>
             </Box>
           </Box>
           <Box
@@ -133,11 +100,6 @@ export default function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
               alignItems: 'center',
             }}
           >
-            <ToggleColorMode
-              data-screenshot="toggle-mode"
-              mode={mode}
-              toggleColorMode={toggleColorMode}
-            />
             <Button color="primary" variant="text" size="small" onClick={handleSignIn}>
               Sign in
             </Button>

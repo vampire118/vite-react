@@ -12,11 +12,16 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { SitemarkIcon } from './CustomIcons';
+import { Link, useNavigate } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [];
+const settings = ['Profile', 'Logout'];
 
 function Header() {
+
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -35,29 +40,25 @@ function Header() {
     setAnchorElUser(null);
   };
 
+  const handleMenuItemClick = (setting: string) => {
+    handleCloseUserMenu();
+    if (setting === 'Profile') {
+      navigate('/profile');
+    } else if (setting === 'Logout') {
+      // Handle logout logic here
+    }
+  };
+
   return (
     <AppBar className="fixed w-full z-10">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+          <Link
+            to="/"
+            style={{ alignSelf: 'left' }}
           >
-            LOGO
-          </Typography>
-
+            <SitemarkIcon />
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -126,10 +127,28 @@ function Header() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 0 }}>
+            <Button
+              component={Link}
+              to="/sign-in"
+              variant="outlined"
+              sx={{ marginRight: 2, color: 'white', borderColor: 'white' }}
+              className="hover:bg-white hover:text-black focus:outline-none"
+            >
+              Sign In
+            </Button>
+            <Button
+              component={Link}
+              to="/sign-up"
+              variant="contained"
+              sx={{ bgcolor: 'white', color: 'black' }}
+              className="hover:bg-gray-200 focus:outline-none"
+            >
+              Sign Up
+            </Button>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: 2 }}>
+                <Avatar alt="Remy Sharp" src="/avatar.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -149,7 +168,7 @@ function Header() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={() => handleMenuItemClick(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
@@ -160,4 +179,5 @@ function Header() {
     </AppBar>
   );
 }
+
 export default Header;

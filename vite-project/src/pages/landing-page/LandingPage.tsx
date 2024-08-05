@@ -17,6 +17,7 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import getLPTheme from './getLPTheme';
+import Header from '../../components/Header';
 
 interface ToggleCustomThemeProps {
   showCustomTheme: Boolean;
@@ -64,7 +65,7 @@ function ToggleCustomTheme({
 }
 
 export default function LandingPage() {
-  const [mode, setMode] = React.useState<PaletteMode>('dark');
+  const [mode, setMode] = React.useState<PaletteMode>('light');
   const [showCustomTheme, setShowCustomTheme] = React.useState(false);
   const LPtheme = createTheme(getLPTheme(mode));
   const defaultTheme = createTheme({ palette: { mode } });
@@ -80,9 +81,10 @@ export default function LandingPage() {
   return (
     <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
       <CssBaseline />
-      <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+      <Header />
+      {/* <AppAppBar mode={mode} toggleColorMode={toggleColorMode} /> */}
       <Hero />
-      <Box sx={{ bgcolor: 'background.default' }}>
+      {/* <Box sx={{ bgcolor: 'background.default' }}>
         <LogoCollection />
         <Features />
         <Divider />
@@ -95,7 +97,7 @@ export default function LandingPage() {
         <FAQ />
         <Divider />
         <Footer />
-      </Box>
+      </Box> */}
     </ThemeProvider>
   );
 }

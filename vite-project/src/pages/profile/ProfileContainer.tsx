@@ -67,25 +67,6 @@ const ProfileContainer = () => {
           An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.
         </Typography>
       </Card>
-
-      <Box mt={4}>
-        <form>
-          <TextField
-            fullWidth
-            variant="outlined"
-            placeholder="Enter your text"
-            className="bg-white border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent mb-4"
-          />
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            className="bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50"
-          >
-            Sign up
-          </Button>
-        </form>
-      </Box>
     </Container>
   );
 };
